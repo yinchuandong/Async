@@ -5,6 +5,40 @@ android的http异步框架
 -----
 ### 入口
     com.example.async.MainActivity.java
+    
+### 包结构
+	用户界面包
+	com.example.async
+	|—— MainActivity 入口文件
+	|—— PlaceholderFragment 用法测试的入口
+	
+	用户实体类
+	com.example.async
+	|—— School 具体的实体，需要继承QuantaBaseModel 
+	
+	异步网络通信框架
+	com.quanta.async 
+	|—— QuantaConfig 异步框架的全局配置文件，用户必须根据自己的包名去配置
+	|—— QuantaAsync 异步框架对外的接口，需要传入context对象，该类不做具体操作，负责将任务转发给QuantaTaskThread和QuantaHandler
+	|—— QuantaTaskThread 具体处理的任务的线程池，由QuantaAsync调用，处理完完成之后通知QuantaHandler
+	|—— QuantaHttpClient 网络通信类，由QuantaThread调用，模拟浏览器请求，通过SharedPreference持久化Cookie
+	|—— QuantaHandler 将QuantaTaskThread执行完的结果处理成QuantaBaseMessage的格式，再通过interface 进行回调
+	|—— QuantaBaseMessage 消息基类，数据返回的格式需要按照该类的格式设定：如{"data":{}, "info":"success", "status":1},后面详解
+	|—— QuantaModel 基类的模型，所有用户自定义的类必须继承自改模型，否则将会出错
+
+### QuantaBaseMessage Json数据类型，根节点data, info, status是固定的，子节点的名称可以自定义
+	{
+		"data": {
+			"User" : {"name": "wangjiewen", "age": 22},
+			"Article" : [
+				{"title": "如何成为优秀的程序员", "content": "少吃，多打代码"},
+				{"title": "如何成为优秀的程序员", "content": "少吃，多打代码"},
+				{"title": "如何成为优秀的程序员", "content": "少吃，多打代码"}
+			]
+		}, 
+		"info": "success", 
+		"status": 1
+	}
 
 ### 全局配置
 	/**
