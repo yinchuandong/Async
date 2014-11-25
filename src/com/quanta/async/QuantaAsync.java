@@ -59,6 +59,11 @@ public class QuantaAsync{
 		}
 	}
 	
+	/**
+	 * 设置回调的接口
+	 * @author wangjiewen
+	 *
+	 */
 	public interface OnQuantaAsyncListener{
 		
 		/**

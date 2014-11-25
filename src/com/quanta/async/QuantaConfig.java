@@ -1,5 +1,10 @@
 package com.quanta.async;
 
+/**
+ * 针对quanta包的全局配置文件
+ * @author wangjiewen
+ *
+ */
 public class QuantaConfig {
 
 	/**
