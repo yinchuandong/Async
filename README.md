@@ -3,20 +3,20 @@ android的http异步框架
 
 使用接口回调，实现了cookie持久化，保持session一致
 -----
-### 入口
+### 1. 入口
     com.example.async.MainActivity.java
     
-### 包结构
-	用户界面包
+### 2. 包结构
+	2.1 用户界面包
 	com.example.async
 	|—— MainActivity 入口文件
 	|—— PlaceholderFragment 用法测试的入口
 	
-	用户实体类
+	2.2 用户实体类
 	com.example.async
 	|—— School 具体的实体，需要继承QuantaBaseModel 
 	
-	异步网络通信框架
+	2.3 异步网络通信框架
 	com.quanta.async 
 	|—— QuantaConfig 异步框架的全局配置文件，用户必须根据自己的包名去配置
 	|—— QuantaAsync 异步框架对外的接口，需要传入context对象，该类不做具体操作，负责将任务转发给QuantaTaskThread和QuantaHandler
@@ -26,7 +26,7 @@ android的http异步框架
 	|—— QuantaBaseMessage 消息基类，数据返回的格式需要按照该类的格式设定：如{"data":{}, "info":"success", "status":1},后面详解
 	|—— QuantaModel 基类的模型，所有用户自定义的类必须继承自改模型，否则将会出错
 
-### QuantaBaseMessage Json数据类型，根节点data, info, status是固定的，子节点的名称可以自定义
+### 3. QuantaBaseMessage Json数据类型，根节点data, info, status是固定的，子节点的名称可以自定义
 	{
 		"data": {
 			"User" : {"name": "wangjiewen", "age": 22},
@@ -40,7 +40,7 @@ android的http异步框架
 		"status": 1
 	}
 
-### 全局配置
+### 4. 全局配置
 	/**
 	 * 针对quanta包的全局配置文件
 	 * @author wangjiewen
@@ -64,7 +64,7 @@ android的http异步框架
 		public final static String PERSISTENT_COOKIE = "_persistent_cookie";
 	}
 
-### 用法案例
+### 5.用法案例
 	//测试get方法
 	getBtn.setOnClickListener(new OnClickListener() {
 		
