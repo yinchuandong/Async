@@ -115,6 +115,7 @@ public class QuantaHttpClient {
 		} catch (ConnectTimeoutException e) {
 			throw new Exception("网络超时");
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new Exception("网络错误");
 		}
 	}

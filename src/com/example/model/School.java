@@ -7,7 +7,6 @@ public class School extends QuantaBaseModel{
 	private String schoolId;
 	private String schoolName;
 	
-	
 	public String getSchoolId() {
 		return schoolId;
 	}
@@ -20,6 +19,8 @@ public class School extends QuantaBaseModel{
 	public void setSchoolName(String schoolName) {
 		this.schoolName = schoolName;
 	}
+	
+	
 	
 	
 }
